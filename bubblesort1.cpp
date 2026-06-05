@@ -7,16 +7,10 @@ using namespace std;
 class Solution {
 public:
     vector<int> bubbleSort(vector<int>& nums) {
-        for(int i=0; i<nums.size(); i++){
-            
-            for(int j=i+1; j<nums.size(); ++j){
-                if(nums[i]<nums[j]) continue;
-                else{
-                int temp;
-                temp=nums[i];
-                nums[i]=nums[j];
-                nums[j]=temp;
-                j=i;
+        for(int i=0; i<nums.size()-1; i++){
+            for(int j=0; j<nums.size()-i-1; j++){
+                if(nums[j]>nums[j+1]){
+                    swap(nums[j],nums[j+1]);
                 }
             }
         }
