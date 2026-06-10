@@ -6,24 +6,39 @@ using namespace std;
 
 class Solution {
 public:
-     void merge(vector<int>& arr, int left, int mid, int right){
+     void merge(vector<int>& arr, int low, int mid, int high) {
+    
         vector<int> temp;
-        int low=left, high=mid+1;
-        
+        int left = low, right = mid + 1;
+
+        while (left <= mid && right <= high) {
+            if (arr[left] <= arr[right])
+                temp.push_back(arr[left++]);
+            else
+                temp.push_back(arr[right++]);
+        }
+
+        while (left <= mid)
+            temp.push_back(arr[left++]);
+
+        while (right <= high)
+            temp.push_back(arr[right++]);
+
+        for (int i = low; i <= high; i++)
+            arr[i] = temp[i - low];
+    }
 
 
-     }
+    void mergeSort(vector<int>& arr, int low, int high) {
+        if (low >= high)
+            return;
+        int mid = (low + high) / 2;
+        mergeSort(arr, low, mid);
+
+        mergeSort(arr, mid + 1, high);
 
 
-
-
-    void mergesort(vector<int>& arr,int left, int right){
-        if(left >=right)return;
-
-        int mid = (left +right )/2;
-        mergesort(arr, left, mid);
-        mergesort(arr, mid+1,right);
-        merge(arr, left, mid, right);
+        merge(arr, low, mid, high);
     }
 };
 
@@ -32,9 +47,11 @@ int main() {
 
     Solution obj;
     vector<int> result = {7 ,9 ,6 ,2 ,4};
-    obj.mergesort(result);
+    obj.mergeSort(result, 0, (int)result.size() - 1);
 
-    for (int i = 0; i < result.size(); i++) {
-    cout << result[i] << " ";
+    for (int i = 0; i < (int)result.size(); i++) {
+        cout << result[i] << " ";
     }
+    cout << '\n';
+    return 0;
 }   
