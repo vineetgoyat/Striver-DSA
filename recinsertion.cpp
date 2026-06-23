@@ -17,9 +17,7 @@ public:
             }
             arr[j+1]=key;
         }
-        
-        
-    return arr;
+    return;
         
     }
     
@@ -32,7 +30,5 @@ int main() {
     vector<int> result = {7 ,9 ,6 ,2 ,4};
     obj.recinsort(result);
 
-    for (int i = 0; i < result.size(); i++) {
-    cout << result[i] << " ";
-    }
+    for ( int x : result)  cout << x << " "; 
 }   
