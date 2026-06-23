@@ -30,5 +30,5 @@ int main() {
     vector<int> result = {7 ,9 ,6 ,2 ,4};
     obj.recinsort(result);
 
-    for ( int x : result)  cout << x << " "; 
+    for ( int x : result) { cout << x << " "; }
 }   
